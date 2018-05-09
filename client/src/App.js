@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import OrderSearcher from './containers/OrderSearcher'
 
 class App extends Component {
   state = {users: []}
@@ -18,6 +19,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+          <h1>clientOrderGuid Searcher</h1>
+            <OrderSearcher/>
 	<h1>Users</h1>
 	<ul>
 		{this.state.users.map( u => <li key={u.id}>{u.username}</li> )}

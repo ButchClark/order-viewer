@@ -44,12 +44,12 @@ router.get('/', function (req, res, next) {
         console.log(' Silence should be saved now')
     })
 
-    // console.log('------ calling Kitten.find()... ---------')
-    // Kitten.find(function(err,respkittens){
-    //     if(err) return console.error(err)
-    //     console.log('**** Response from Kitten.find() *****')
-    //     console.log(respkittens)
-    // })
+    console.log('------ calling Kitten.find()... ---------')
+    Kitten.find(function(err,respkittens){
+        if(err) return console.error(err)
+        console.log('**** Response from Kitten.find() *****')
+        console.log(respkittens)
+    })
 
     // console.log(`=== JSON(kittens): ${JSON.stringify(kittens)}`)
     // console.log(`=== kittens.count(): ${kittens.count()}`)

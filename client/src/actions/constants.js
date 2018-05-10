@@ -1,0 +1,1 @@
+export const TOGGLE_SHOW_SEARCH = "TOGGLE_SHOW_SEARCH"

@@ -18,7 +18,6 @@ class App extends Component {
         return (
             <div className="App">
                 {searcher}
-                <h1>Users</h1>
             </div>
         );
     }

@@ -2,7 +2,8 @@ const initialState = {
     order: {},
     events: [],
     display: {
-        showSearch: true
+        showSearch: true,
+        recentGuids: []
     }
 }
 

@@ -3,13 +3,16 @@ import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './reducers'
 import logger from 'redux-logger'
 import initialState from './actions/initialState'
+import {composeWithDevTools} from 'redux-devtools-extension'
 
 const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(
-        thunkMiddleware,
-        logger
+    composeWithDevTools(
+        applyMiddleware(
+            thunkMiddleware,
+            logger
+        )
     )
 )
 

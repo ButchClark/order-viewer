@@ -11,4 +11,11 @@ describe('<OrderSearcher />',()=>{
         expect (wrapper.find('h4').text()).toEqual("Search for clientOrderGuid")
     })
 
+    it('has a list of clientOrderGuids',()=>{
+        const wrapper = shallow(<OrderSearcher/>)
+        expect(wrapper.find('.guidList').length).toBe(1)
+    })
+
+
+
 })

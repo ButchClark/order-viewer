@@ -9,6 +9,9 @@ class OrderSearcher extends Component{
         return(
             <div>
                 <h4>Search for clientOrderGuid</h4>
+                <li className="guidList">
+
+                </li>
             </div>
     )
     }

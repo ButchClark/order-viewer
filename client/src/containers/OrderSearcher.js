@@ -2,29 +2,36 @@ import React, {Component} from 'react'
 import {getRecentClientOrderGuids, loadEvents} from "../actions";
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ListGroup, ListGroupItem} from 'reactstrap'
+import {ListGroup, ListGroupItem, InputGroup, InputGroupAddon, Button, Input} from 'reactstrap'
 
 class OrderSearcher extends Component{
     componentWillMount() {
-        console.log('>OrderSearcher.componentWillMount() - calling getRecentClientOrderGuids()')
-        this.props.getRecentClientOrderGuids()
+        // this.props.getRecentClientOrderGuids()
     }
 
     handleClick = (e) => {
-        console.log(`*** ListGroupItem clicked: ${e.currentTarget.innerText}`)
-        this.props.loadEvents(e.currentTarget.innerText)
+        this.props.loadEvents('798QN29WLs')
+        //this.props.loadEvents(e.currentTarget.innerText)
+    }
+
+    handleLoadEvents=(e)=>{
+        console.log(`> OrderSearcher.handlLoadEvents- e:`)
+        console.dir(e)
     }
 
     render(){
-        console.log('>OrderSearcher.render() - this.props.guids:')
-        console.log(` .. this.props.guids: ${JSON.stringify(this.props.guids)}`)
-
         const guidList = this.props.guids.map(
             (guid,index) =><ListGroupItem key={index} tag="button" action onClick={e => this.handleClick(e)}>{guid}</ListGroupItem>
         )
 
         return(
             <div>
+                <InputGroup onSubmit={this.handleLoadEvents} className="bg-info">
+                    <InputGroupAddon addonType="append"><Button type="submit">Load Events</Button></InputGroupAddon>
+                    <Input />
+                </InputGroup>
+
+
                 <h4>Click to load an order</h4>
                 <ListGroup className="guidList">
                     {guidList}

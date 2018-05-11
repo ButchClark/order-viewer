@@ -25,7 +25,7 @@ class OrderSearcher extends Component{
 
         return(
             <div>
-                <h4>Search for clientOrderGuid</h4>
+                <h4>Click to load an order</h4>
                 <ListGroup className="guidList">
                     {guidList}
                 </ListGroup>

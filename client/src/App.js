@@ -16,7 +16,6 @@ class App extends Component {
     render() {
         const searcher = this.props.showSearch === true
             ? <div>
-                <h1>clientOrderGuid Searcher</h1>
                 <OrderSearcher/>
             </div>
             : <Button onClick={this.handleClick} color="warning">Show Search</Button>

@@ -17,6 +17,7 @@ export function display(state = initialState, action) {
 
         case SHOW_ORDER_DISPLAY:
             console.log("> reducers.display.SHOW_ORDER_DISPLAY")
+            console.dir(state)
             return {
                 ...state,
                 showOrderDisplay: true

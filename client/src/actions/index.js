@@ -59,7 +59,7 @@ export function loadEvents(guid){
         dispatch({type: SHOW_ORDER_DISPLAY})
         dispatch({
             type: EVENTS_LOADED,
-            events: json
+            events: json.events
         })
     }
 }

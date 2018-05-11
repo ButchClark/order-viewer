@@ -3,7 +3,8 @@ const initialState = {
     events: [],
     display: {
         showSearch: true,
-        recentGuids: []
+        recentGuids: [],
+        showOrderDisplay: false
     }
 }
 

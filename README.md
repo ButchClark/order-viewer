@@ -13,7 +13,8 @@ cd into client directory
 
 *yarn start*
 
-
+### URL for dater
+"proxy": "https://apps-review.global.dish.com/domo-event-log-master/domo-event-log"
 
 # React Snippets triggers
 

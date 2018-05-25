@@ -53,7 +53,6 @@ export function loadEvents(guid){
         await console.dir(json)
         dispatch({type: TOGGLE_SHOW_SEARCH})
         dispatch({type: SHOW_ORDER_DISPLAY})
-
         dispatch({
             type: EVENTS_LOADED,
             events: json

@@ -2,47 +2,44 @@ import React, {Component} from 'react'
 import {getRecentClientOrderGuids, loadEvents} from "../actions";
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ListGroup, ListGroupItem, InputGroup, InputGroupAddon, Button, Input} from 'reactstrap'
+import {ListGroup, ListGroupItem, Form, FormGroup, Button, Input} from 'reactstrap'
 
 class OrderSearcher extends Component {
     componentWillMount() {
         // this.props.getRecentClientOrderGuids()
     }
 
-    handleClick = (e) => {
-        console.log('--> OrderSearcher.handleClick(e)')
-        // this.props.loadEvents('798QN29WLs')
-        if (!e.currentTarget.innerHTML) {
-            console.log('loading default event set')
-            this.props.loadEvents('Rl7FO3FxXj')
-        } else {
-            console.log(`loading event set for: Rl7FO3FxXj`)
-            this.props.loadEvents('Rl7FO3FxXj')
-        }
-    }
 
     render() {
+        const handleClick = (e) => {
+            e.preventDefault()
+            console.log('--> OrderSearcher.handleClick(e)')
+            console.dir(e)
+            if (e.target.inpoot) console.log(` .. e.target.inpoot.value: ${e.target.inpoot.value}`)
+            else console.log(` .. e.target.inpoot is NULL/undefined`)
+
+            if (!e.target.inpoot || !e.target.inpoot.value){
+                console.log('loading default event set')
+                this.props.loadEvents('Rl7FO3FxXj')
+            } else {
+                console.log(`loading event set for: ${e.target.inpoot.value}`)
+                this.props.loadEvents(e.target.inpoot.value)
+            }
+        }
         const guidList = this.props.guids.map(
             (guid, index) => <ListGroupItem key={index} tag="button" action
-                                            onClick={e => this.handleClick(e)}>{guid}</ListGroupItem>
+                                            onClick={e => handleClick(e)}>{guid}</ListGroupItem>
         )
         const defaultButton = (!this.props.guids || this.props.guids.length === 0)
-            ? <Button onClick={(e)=>this.handleClick(e)}>Load Sample Event set</Button>
+            ? <Button onClick={(e) => handleClick(e)}>Load Sample Event set</Button>
             : <p/>
 
         return (
             <div>
-                <InputGroup onSubmit={(e)=>this.handleClick(e)} className="bg-info">
-                    <InputGroupAddon addonType="append"><Button type="submit">Load Events for clientOrderGuid:</Button></InputGroupAddon>
-                    <Input placeholder="clientOrderGuid"/>
-                </InputGroup>
-
-
-                <h4>Click to load events for a sample order</h4>
-                {defaultButton}
-                <ListGroup className="guidList">
-                    {guidList}
-                </ListGroup>
+                <Form onSubmit={(e) => { handleClick(e) }} className="bg-info">
+                    <Input id="inpoot" placeholder="clientOrderGuid"/>
+                    <Button type="submit">Load Events for clientOrderGuid:</Button>
+                </Form>
             </div>
         )
     }

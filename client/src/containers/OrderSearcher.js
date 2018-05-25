@@ -14,16 +14,11 @@ class OrderSearcher extends Component {
         // this.props.loadEvents('798QN29WLs')
         if (!e.currentTarget.innerHTML) {
             console.log('loading default event set')
-            this.props.loadEvents('hey')
+            this.props.loadEvents('Rl7FO3FxXj')
         } else {
-            console.log(`loading event set for: ${e.currentTarget.innerHTML}`)
-            this.props.loadEvents(e.currentTarget.innerText)
+            console.log(`loading event set for: Rl7FO3FxXj`)
+            this.props.loadEvents('Rl7FO3FxXj')
         }
-    }
-
-    handleLoadEvents = (e) => {
-        console.log(`> OrderSearcher.handlLoadEvents- e:`)
-        console.dir(e)
     }
 
     render() {

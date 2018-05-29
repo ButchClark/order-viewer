@@ -16,6 +16,24 @@ cd into client directory
 ### URL for dater
 "proxy": "https://apps-review.global.dish.com/domo-event-log-master/domo-event-log"
 
+### Good Test clientOrderGuids for Review:
+
+* ﻿TESTUS53812  -  This guy has an update for both Order-level Attribs and Order Line-level attribs
+*  ﻿2-23-18_1   -  And this guy only updates Order-level Attributes
+*  ZDtGEEq65U   -  Valid order, but no preprocessing updates
+
+## MongoDB queries
+
+Get all order-proprocessed-events that contain an actual order update:
+
+db.getCollection('DomoEventLog').find({$and: [
+   {'domoEvent.type':'order-preprocessed-event'}, 
+   {'domoEvent.payload.orderUpdate': {$gt:{}} }
+]})
+
+
+
+
 # React Snippets triggers
 
 <table>

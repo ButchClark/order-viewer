@@ -7,13 +7,33 @@ import EventList from "../components/EventList";
 import OrderBuilder from '../helpers/OrderBuilder'
 
 class OrderDisplay extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={ order: {}}
+
+        this.state = {order: {}} // set default
     }
 
 
-    eventSelected = (eventId) =>{
+    componentWillReceiveProps(nextProps) {
+        console.log("@@@@@@componentWillReciveProps ---")
+        console.dir(nextProps)
+
+        if (!nextProps) {
+            console.log("!!! OrderDisplay.componentWillReceiveProps() got nextProps===undefined/null")
+            return
+        }
+        const oaeIdEvents = nextProps.events
+            .filter(ev => ev.domoEvent.type === "order-accepted-event")
+            .map(oaEvent => {
+                return oaEvent.domoEvent.eventId
+            })
+        const oaeId = oaeIdEvents[0]
+        const firstOrder = OrderBuilder(nextProps.events, oaeId)
+
+        this.setState({order: firstOrder})
+    }
+
+    eventSelected = (eventId) => {
         console.log(`OrderDisplay.eventSelected for id: ${eventId}`)
         const odr = OrderBuilder(this.props.events, eventId)
         this.setState({order: odr})
@@ -25,7 +45,7 @@ class OrderDisplay extends Component {
             <Container>
                 <Row>
                     <Col>
-                        <CurrentOrder currentOrder={this.state.order} />
+                        <CurrentOrder currentOrder={this.state.order}/>
                     </Col>
                     <Col>
                         <EventList events={this.props.events} eventSelectedHandler={this.eventSelected}/>
@@ -40,7 +60,7 @@ OrderDisplay.propTypes = {
     events: PropTypes.array
 };
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
     events: state.events
 })
 

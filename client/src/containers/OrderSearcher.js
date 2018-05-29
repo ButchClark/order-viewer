@@ -2,13 +2,9 @@ import React, {Component} from 'react'
 import {getRecentClientOrderGuids, loadEvents} from "../actions";
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ListGroup, ListGroupItem, Form, FormGroup, Button, Input} from 'reactstrap'
+import {Form, Button, Input} from 'reactstrap'
 
 class OrderSearcher extends Component {
-    componentWillMount() {
-        // this.props.getRecentClientOrderGuids()
-    }
-
 
     render() {
         const handleClick = (e) => {
@@ -26,13 +22,6 @@ class OrderSearcher extends Component {
                 this.props.loadEvents(e.target.inpoot.value)
             }
         }
-        const guidList = this.props.guids.map(
-            (guid, index) => <ListGroupItem key={index} tag="button" action
-                                            onClick={e => handleClick(e)}>{guid}</ListGroupItem>
-        )
-        const defaultButton = (!this.props.guids || this.props.guids.length === 0)
-            ? <Button onClick={(e) => handleClick(e)}>Load Sample Event set</Button>
-            : <p/>
 
         return (
             <div>

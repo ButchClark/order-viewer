@@ -43,6 +43,11 @@ export function getRecentClientOrderGuids(){
 }
 
 export function loadEvents(guid){
+    if(!guid){
+        console.log('>actions.loadEvents called with undefined/null')
+        return
+    }
+
     console.log(`>actions.loadEvents for clientOrderGuid: ${guid}`)
     return async(dispatch) => {
         const uri = `/events?clientOrderGuid=${guid}`

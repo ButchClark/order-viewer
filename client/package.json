@@ -5,6 +5,7 @@
   "proxy": "https://apps-review.global.dish.com/domo-event-log-master/domo-event-log",
   "dependencies": {
     "bootstrap": "^4.1.1",
+    "classnames": "^2.2.5",
     "jquery": "1.9.1",
     "popper.js": "^1.14.3",
     "react": "^16.3.2",

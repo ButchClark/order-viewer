@@ -10,7 +10,7 @@ class OrderDisplay extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {order: {}} // set default
+        this.state = {order: {}, selectedEventId: 0} // set default
     }
 
 
@@ -36,7 +36,7 @@ class OrderDisplay extends Component {
     eventSelected = (eventId) => {
         console.log(`OrderDisplay.eventSelected for id: ${eventId}`)
         const odr = OrderBuilder(this.props.events, eventId)
-        this.setState({order: odr})
+        this.setState({order: odr, selectedEventId: eventId})
     }
 
     render() {
@@ -48,7 +48,7 @@ class OrderDisplay extends Component {
                         <CurrentOrder currentOrder={this.state.order}/>
                     </Col>
                     <Col>
-                        <EventList events={this.props.events} eventSelectedHandler={this.eventSelected}/>
+                        <EventList events={this.props.events} selectedEventId={this.state.selectedEventId} eventSelectedHandler={this.eventSelected}/>
                     </Col>
                 </Row>
             </Container>
